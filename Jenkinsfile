@@ -2,9 +2,23 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Build') {
+            agent{
+                docker{
+                    image 'node:18-alpin'
+                    reuseNode true
+                }
+            }
             steps {
-                echo 'Hello from Jenkins!'
+                
+                sh'''
+                 ls -la
+                 npm --version
+                 node --version
+                 npm ci
+                 npm run build
+                 ls -la
+                '''
             }
         }
     }
