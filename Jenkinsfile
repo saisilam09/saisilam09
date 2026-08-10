@@ -46,7 +46,7 @@ pipeline {
               }
             steps{
                 sh '''
-                 npm install -g serve
+                 npm install serve
                  node-modules/.bin/serve -s build $
                  seelp 10
                  npx playwrite test
